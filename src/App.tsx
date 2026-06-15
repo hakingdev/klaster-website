@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { AudioPlayerProvider } from './context/AudioPlayerContext'
 import { event } from './data/event'
 import Hero from './components/Hero'
@@ -26,6 +27,7 @@ export default function App() {
       <Footer />
       <LegalOverlay />
       <ThankYou />
+      <Analytics />
     </AudioPlayerProvider>
   )
 }

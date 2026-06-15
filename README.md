@@ -53,14 +53,18 @@ MAIL_TO         klaster@hotel-weisses-haus.com
 
 ---
 
-## Tracking (Meta Pixel)
+## Tracking & Analytics
 
-Der Meta Pixel (`2187361092062134`) liegt in `index.html` und feuert beim Laden
+**Meta Pixel** (`2187361092062134`) liegt in `index.html` und feuert beim Laden
 `PageView`. Nach erfolgreichem Absenden wird zur Danke-Seite (`#danke`)
 navigiert, die **genau einmal** das Standard-Event **`Lead`** auslöst
 (abgesichert über ein Session-Flag — kein Lead bei direktem Aufruf von
 `#danke`). Logik: [`src/utils/analytics.ts`](src/utils/analytics.ts) und
 [`src/components/ThankYou.tsx`](src/components/ThankYou.tsx).
+
+**Vercel Web Analytics** ist über `<Analytics />` (`@vercel/analytics/react`) in
+`src/App.tsx` eingebunden. Erfasst Daten erst nach dem Deploy — im
+Vercel-Dashboard unter *Analytics* aktivieren.
 
 ---
 
