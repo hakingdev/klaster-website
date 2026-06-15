@@ -1,0 +1,99 @@
+.section {
+  position: relative;
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(80% 60% at 50% 0%, rgba(200, 148, 74, 0.06), transparent 70%);
+}
+
+.inner {
+  max-width: 760px;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.title {
+  margin-top: 0.8rem;
+}
+
+.text {
+  margin: 1.1rem auto 0;
+  max-width: 46ch;
+  color: var(--text-muted);
+  font-size: clamp(0.98rem, 2.5vw, 1.12rem);
+}
+
+.player {
+  margin-top: clamp(2.2rem, 6vw, 3.2rem);
+  padding: clamp(1.6rem, 5vw, 2.6rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+}
+
+/* Waveform / equalizer ------------------------------------------------------ */
+.wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 70px;
+  margin-bottom: 1.8rem;
+}
+
+.wave span {
+  display: block;
+  width: 3px;
+  height: var(--h);
+  min-height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent-bright), var(--accent-deep));
+  opacity: 0.32;
+  transform: scaleY(0.34);
+  transform-origin: center;
+  transition: opacity 0.5s var(--ease);
+}
+
+/* When sound is actually audible, the bars come alive. */
+.waveActive span {
+  opacity: 0.9;
+  animation: equalize 1.1s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.07s);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.muteBtn {
+  min-width: 130px;
+}
+
+.hint {
+  margin-top: 1.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.error {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.error code {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: 0.85em;
+  color: var(--accent-bright);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep a calm, slightly raised static waveform instead of animating. */
+  .waveActive span {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+}

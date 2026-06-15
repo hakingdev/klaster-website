@@ -1,0 +1,173 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: clamp(5rem, 14vh, 9rem);
+}
+
+/* Background layer: drop a photo at /public/images/hero.jpg to replace the
+   gradient. The gradients stay as a graceful fallback + tint. */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #060606;
+  background-image:
+    radial-gradient(80% 55% at 72% 30%, rgba(200, 148, 74, 0.22), transparent 60%),
+    radial-gradient(60% 50% at 18% 80%, rgba(138, 99, 48, 0.16), transparent 65%),
+    linear-gradient(180deg, #050505 0%, #070707 55%, #050505 100%),
+    url('/images/hero.jpg');
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+  animation: slowDrift 26s ease-in-out infinite alternate;
+}
+
+/* Darkening + warmth so any photo stays moody and the text stays legible. */
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.55) 0%, rgba(5, 5, 5, 0.2) 35%, rgba(5, 5, 5, 0.92) 100%),
+    radial-gradient(120% 90% at 50% 50%, transparent 40%, rgba(5, 5, 5, 0.7) 100%);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  animation: fadeInUp 1s var(--ease) both;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: clamp(0.66rem, 2.4vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: clamp(1.4rem, 4vw, 2.2rem);
+}
+
+.dot {
+  color: var(--text-muted);
+  margin-inline: 0.15em;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.92;
+  text-transform: uppercase;
+  font-size: clamp(3.6rem, 19vw, 11rem);
+  letter-spacing: clamp(0.04em, 1.4vw, 0.14em);
+  margin-left: -0.02em;
+  background: linear-gradient(180deg, #fbf6ee 0%, #e7ddcd 55%, #c8944a 140%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 60px rgba(200, 148, 74, 0.18);
+}
+
+.genres {
+  font-family: var(--font-display);
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-top: clamp(1.1rem, 3vw, 1.6rem);
+  padding-top: clamp(1.1rem, 3vw, 1.5rem);
+  border-top: 1px solid var(--line);
+  display: inline-block;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 3.4vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--text);
+  max-width: 36ch;
+  margin-top: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.secret {
+  font-size: clamp(0.9rem, 2.6vw, 1rem);
+  color: var(--text-muted);
+  max-width: 46ch;
+  margin-top: 1.1rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: clamp(2rem, 5vw, 2.6rem);
+}
+
+.micro {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-top: 1.2rem;
+}
+
+/* Equalizer shown inside the "Sound läuft" button. */
+.eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 0.8em;
+}
+
+.eq span {
+  width: 2px;
+  height: 100%;
+  background: var(--accent-bright);
+  transform-origin: bottom;
+  animation: equalize 1s ease-in-out infinite;
+}
+
+.eq span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.eq span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Scroll hint at the bottom of the hero. */
+.scrollHint {
+  position: absolute;
+  bottom: clamp(1.4rem, 4vh, 2.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 46px;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--accent), transparent);
+  animation: glowPulse 2.4s ease-in-out infinite;
+}
+
+/* Mobile-first: a touch more breathing room on small screens already handled
+   by clamp(). On larger screens the column simply has more space. */
+@media (min-width: 768px) {
+  .inner {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bg {
+    background-position: center 30%;
+  }
+}

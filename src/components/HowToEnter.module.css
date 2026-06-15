@@ -1,0 +1,72 @@
+.section {
+  border-top: 1px solid var(--line);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: clamp(2.4rem, 6vw, 3.4rem);
+}
+
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.step:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.num {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  min-width: 2.4ch;
+}
+
+.stepTitle {
+  font-size: clamp(1.05rem, 3vw, 1.45rem);
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.step:nth-child(2) {
+  transition-delay: 0.07s;
+}
+.step:nth-child(3) {
+  transition-delay: 0.14s;
+}
+.step:nth-child(4) {
+  transition-delay: 0.21s;
+}
+
+.note {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  max-width: 56ch;
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 2.4vw, 1.05rem);
+  padding-left: 1.2rem;
+  border-left: 1px solid var(--line-gold);
+}
+
+@media (min-width: 768px) {
+  .step {
+    gap: 2rem;
+    align-items: center;
+  }
+}

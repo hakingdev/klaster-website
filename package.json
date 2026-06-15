@@ -1,0 +1,33 @@
+{
+  "name": "klaster-private-event",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "KLASTER — Private Electronic Music Event landing page",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/index.js",
+    "dev:full": "concurrently -n web,api -c cyan,magenta \"npm:dev\" \"npm:server\"",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.16",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

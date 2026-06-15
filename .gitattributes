@@ -1,0 +1,17 @@
+# Normalise line endings to LF for text files (Vercel/CI build on Linux).
+* text=auto eol=lf
+
+# Treat these as binary (no EOL conversion, no diff).
+*.mp3 binary
+*.wav binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.pdf binary

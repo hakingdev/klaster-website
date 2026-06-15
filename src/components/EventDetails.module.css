@@ -1,0 +1,88 @@
+.section {
+  border-top: 1px solid var(--line);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--bg-card);
+  transition: background-color 0.4s var(--ease);
+}
+
+.card:hover {
+  background: #111011;
+}
+
+.icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--accent-bright);
+  border: 1px solid var(--line-gold);
+  background: rgba(200, 148, 74, 0.05);
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.label {
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+/* Stagger the reveal for a calmer entrance. */
+.card:nth-child(2) {
+  transition-delay: 0.06s;
+}
+.card:nth-child(3) {
+  transition-delay: 0.12s;
+}
+.card:nth-child(4) {
+  transition-delay: 0.18s;
+}
+.card:nth-child(5) {
+  transition-delay: 0.24s;
+}
+.card:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
